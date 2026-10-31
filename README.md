@@ -13,8 +13,8 @@ covered by those libraries' licences.
 Each release is named after a firmware version and carries two files: the
 relink kit, `relink-kit-<version>.tar.gz`, and `THIRD_PARTY_NOTICES.txt`, every
 component in that version with its licence and notices. Before it is published,
-each kit is checked to relink to that version's image byte for byte, as it is
-and with its LGPL libraries rebuilt from its source.
+each kit is checked to relink to that version's image byte for byte, with its
+LGPL libraries built from its source.
 
 ## Relinking
 
@@ -26,6 +26,10 @@ kit:
 ```sh
 ./relink.sh            # out/firmware.bin: from an unchanged kit, the published image
 ```
+
+Kits after v0.13.1 carry the LGPL libraries as source only, and `relink.sh`
+builds them on its first run; the v0.13.0 and v0.13.1 kits carry them built as
+well.
 
 To use a changed library, edit its source under `lgpl/src/`, then:
 
