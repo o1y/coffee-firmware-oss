@@ -6,7 +6,9 @@
 #     ./relink.sh [OUTDIR]          (default: ./out)
 #
 # Writes OUTDIR/firmware.{elf,map,bin} and compares the .bin with SHA256SUMS:
-# an unchanged kit gives back the published image byte for byte.
+# an unchanged kit gives back the published image byte for byte. The LGPL
+# libraries come as source: if lgpl/lib/ lacks an archive, lgpl/build.sh builds
+# them all first.
 #
 # Finds the PlatformIO packages link/packages.txt names in
 # $PLATFORMIO_PACKAGES_DIR (default ~/.platformio/packages); FRAMEWORK_DIR,
@@ -45,6 +47,15 @@ lines linkflags.txt;      LINKFLAGS=("${LINES_OUT[@]}")
 lines elf2image.txt;      ELF2IMAGE=("${LINES_OUT[@]}")
 lines libpath.txt;        LIBPATH=()
 for d in "${LINES_OUT[@]}"; do LIBPATH+=(-L "$FRAMEWORK_DIR/$d"); done
+
+for a in "${ARCHIVES[@]}"; do
+    case "$a" in lgpl/lib/*)
+        if [ ! -f "$KIT/$a" ]; then
+            FRAMEWORK_DIR="$FRAMEWORK_DIR" TOOLCHAIN_DIR="$TOOLCHAIN_DIR" "$KIT/lgpl/build.sh"
+            break
+        fi ;;
+    esac
+done
 
 mkdir -p "$OUT"
 cd "$KIT"

@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: MIT
 # Copyright (c) 2026 Oliver Mesieh
-# build.sh — rebuild lgpl/lib/'s archives from the source in lgpl/src/.
+# build.sh — build lgpl/lib/'s archives from the source in lgpl/src/.
 #
 #     lgpl/build.sh [OUTDIR]          (default: lgpl/lib, in place)
 #
 # Compiles every member with the image's own flags (lgpl/compile/) and archives
-# them in the original order: unchanged source gives back the same archives
-# byte for byte.
+# them in the original order: unchanged source gives back the archives the
+# image was linked from, byte for byte. ../relink.sh runs this when an archive
+# is missing; after a change to the source, run it yourself.
 #
 # Needs the same packages as ../relink.sh, found the same way (see there).
 set -euo pipefail
