@@ -79,6 +79,7 @@ The firmware's own code, which each kit carries among the object files in
 `app/`, is Copyright (c) 2026 Oliver Mesieh. It is not open source, and no
 licence to it is granted here beyond what the LGPL requires: you may relink it
 with modified versions of the LGPL libraries for your own use, and reverse
-engineer it to debug such modifications. The other components in `app/`, the
-Kario typeface among them, are under the licences `THIRD_PARTY_NOTICES.txt`
-names.
+engineer it to debug such modifications. The Kario typeface is Copyright (c)
+Bernd Volmer / Show me Fonts, used under a commercial license; no license to it
+is granted to you. The other components in `app/` are under the licences
+`THIRD_PARTY_NOTICES.txt` names.
