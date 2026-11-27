@@ -31,7 +31,9 @@ Each release is named after a firmware version and carries two files: the
 relink kit, `relink-kit-<version>.tar.gz`, and `THIRD_PARTY_NOTICES.txt`, every
 component in that version with its licence and notices. Before it is published,
 each kit is checked to relink to that version's image byte for byte, with its
-LGPL libraries built from its source.
+LGPL libraries built from its source. From the first release we sign, its image
+ends in an 80-byte signature a kit cannot make, and the kit relinks to the image
+less those bytes.
 
 ## Relinking
 
@@ -63,11 +65,13 @@ kit; they run only from inside one.
 A relinked image installs like a published one, through the machine's update
 page: follow "Go back to the original firmware" in the installation guide that
 comes with the firmware, but select `out/firmware.bin` instead of the updater,
-and leave **Erase all our data** unticked.
+and leave **Erase all our data** unticked. The machine then asks on its display
+whether to install other firmware, since `out/firmware.bin` carries no
+signature of ours; confirm it there.
 
 Activation does not stand in the way. Installed with **Erase all our data**
 unticked, a relinked image keeps the machine's activation, and the update page
-installs any image without checking where it came from.
+installs any image you confirm on the machine.
 
 ## Licence
 
