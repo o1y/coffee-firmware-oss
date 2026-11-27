@@ -6,9 +6,10 @@
 #     ./relink.sh [OUTDIR]          (default: ./out)
 #
 # Writes OUTDIR/firmware.{elf,map,bin} and compares the .bin with SHA256SUMS:
-# an unchanged kit gives back the published image byte for byte. The LGPL
-# libraries come as source: if lgpl/lib/ lacks an archive, lgpl/build.sh builds
-# them all first.
+# an unchanged kit gives back the published image byte for byte. From a signed
+# release that is the download less the 80-byte signature at its end, and
+# SHA256SUMS has a second line, the download's. The LGPL libraries come as
+# source: if lgpl/lib/ lacks an archive, lgpl/build.sh builds them all first.
 #
 # Finds the PlatformIO packages link/packages.txt names in
 # $PLATFORMIO_PACKAGES_DIR (default ~/.platformio/packages); FRAMEWORK_DIR,
@@ -71,9 +72,11 @@ cd "$KIT"
 got="$("$PYTHON" -c 'import hashlib, sys; print(hashlib.sha256(open(sys.argv[1], "rb").read()).hexdigest())' "$OUT/firmware.bin")"
 echo "firmware.bin  $got"
 if [ -f "$KIT/SHA256SUMS" ]; then
-    if grep -q "^$got  firmware.bin$" "$KIT/SHA256SUMS"; then
-        echo "identical to the published image"
-    else
+    if ! grep -q "^$got  firmware.bin$" "$KIT/SHA256SUMS"; then
         echo "differs from the published image (expected if a library was changed)"
+    elif grep -qv "  firmware.bin$" "$KIT/SHA256SUMS"; then
+        echo "identical to the published image: the download less its last 80 bytes, our signature"
+    else
+        echo "identical to the published image"
     fi
 fi
