@@ -79,11 +79,13 @@ This README and the scripts in [`tools/`](tools) are under the
 [MIT licence](LICENSE). Each kit's libraries are under the licences its
 `THIRD_PARTY_NOTICES.txt` names, whose texts are in [`LICENSES/`](LICENSES).
 
-The firmware's own code, which each kit carries among the object files in
-`app/`, is Copyright (c) 2026 Oliver Mesieh. It is not open source, and no
-licence to it is granted here beyond what the LGPL requires: you may relink it
-with modified versions of the LGPL libraries for your own use, and reverse
-engineer it to debug such modifications. The Kario typeface is Copyright (c)
-Bernd Volmer / Show me Fonts, used under a commercial license; no license to it
-is granted to you. The other components in `app/` are under the licences
-`THIRD_PARTY_NOTICES.txt` names.
+The code of the firmware itself, which each kit carries among the object files
+in `app/`, is Copyright (c) 2026 Oliver Mesieh. It is not open source. It is
+free, under the license in [`FIRMWARE-LICENSE.txt`](FIRMWARE-LICENSE.txt), which
+lets you relink it with modified versions of the LGPL libraries for your own use
+and reverse engineer it to debug such modifications. That holds for every kit
+here, and
+newer kits also carry the file, as `LICENSE.txt`. The Kario typeface is
+Copyright (c) Bernd Volmer / Show me Fonts, used under a commercial license, and
+no license to it is granted to you. The other components in `app/` are under the
+licences `THIRD_PARTY_NOTICES.txt` names.

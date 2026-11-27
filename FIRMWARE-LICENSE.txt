@@ -1,0 +1,40 @@
+LICENSE
+
+Copyright (c) 2026 Oliver Mesieh
+
+This firmware is free of charge. You may install it on a machine you own, or
+with the permission of its owner, and use it for any purpose. This license
+does not expire.
+
+
+PASSING IT ON
+
+You may not share, re-upload or sell the firmware. If you pass on a machine it
+is installed on, the firmware may go with that machine, provided you first
+reset it, so that the new owner activates it and accepts these terms to get a
+license of their own. This does not allow installing the firmware on machines,
+displays or kits in order to sell them.
+
+
+CHANGES
+
+You may not change the firmware, except its parts licensed under the GNU
+Lesser General Public License. You may modify those for your own use, relink
+the firmware with your modified versions of them, and reverse engineer the
+firmware to debug such modifications.
+
+
+THIRD-PARTY SOFTWARE
+
+This license covers the code of this firmware itself. The third-party software
+it contains is under its own licenses, which are listed separately. Nothing in
+this license limits the rights those licenses or the law give you.
+
+
+WARRANTY AND LIABILITY
+
+The firmware is a gift from its author, provided free of charge. The author is
+liable for intent and gross negligence, and for injury to life, body or
+health. Liability under the German Product Liability Act is not affected.
+Beyond that, the author is not liable for damage resulting from installing or
+using the firmware. German law applies to these terms.
